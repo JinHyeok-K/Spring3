@@ -1,0 +1,31 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'mysql:mysql-connector-java'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation group: 'org.json', name: 'json', version: '20220320'
+    // 롬복 사용 시 : Gradle ver 5.0 이상 버전 [ 현재 7.4]
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok' //롬복 [클래스 설계 API]
+    // 롬복 사용 시 : Gradle ver 5.0 이하 버전 [ 현재 7.4]
+    //compileOnly 'org.projectlombok:lombok' //롬복 [클래스 설계 API]
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
